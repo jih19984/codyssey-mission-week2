@@ -71,6 +71,24 @@ def read_menu_choice():
     # TODO 5: 다 통과하면 정수값 반환
     return choice
 
+def read_answer_choice():
+    """사용자에게 1~4 사이 숫자를 입력받습니다. 잘못된 입력이면 None을 반환합니다."""
+    raw = input("선택 : ")
+    raw = raw.strip()
+    if raw == "":
+        print("빈 문자열입니다.")
+        return None
+    try:
+        choice = int(raw)
+    except ValueError:
+        print("숫자만 입력해주세요.")
+        return None
+    if not (1 <= choice <= 4):
+        print("입력된 숫자가 1이상 4이하의 자연수가 아닙니다.")
+        return None
+    return choice
+
+
 
 def main():
     while True:
@@ -81,7 +99,7 @@ def main():
                 continue  # 잘못된 입력 -> 메뉴 다시 표시
 
             if choice == 1:
-                print("[퀴즈 풀기] 아직 구현 전입니다.")
+                play_quiz(get_default_quizzes())
             elif choice == 2:
                 print("[퀴즈 추가] 아직 구현 전입니다.")
             elif choice == 3:
@@ -94,6 +112,29 @@ def main():
         except (KeyboardInterrupt, EOFError):
             print("\n프로그램을 종료합니다.")
             break
+
+def play_quiz(quizzes):
+    if not quizzes:
+        print("등록된 퀴즈가 없습니다.")
+        return
+
+    print(f"퀴즈를 시작합니다! (총 {len(quizzes)}문제)")
+    score = 0
+    for i, quiz in enumerate(quizzes, start=1):
+        quiz.show(i)
+        while True:
+            answer = read_answer_choice() # 1~4를 검증하는 별도 함수
+            if answer is not None:
+                break
+        if quiz.is_correct(answer):
+            print("정답입니다!")
+            score += 1
+        else:
+            print("오답입니다!")
+
+    print(f"결과 : {len(quizzes)} 문제 중 {score}문제 정답!")
+
+
 
 
 if __name__ == "__main__":
