@@ -1,3 +1,5 @@
+from quiz import Quiz
+
 def show_menu():
     print("=" * 40)
     print("      🎯 나만의 퀴즈 게임 🎯")
