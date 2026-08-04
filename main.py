@@ -91,6 +91,8 @@ def read_answer_choice():
 
 
 def main():
+    quizzes = get_default_quizzes()
+
     while True:
         try:
             show_menu()
@@ -99,9 +101,9 @@ def main():
                 continue  # 잘못된 입력 -> 메뉴 다시 표시
 
             if choice == 1:
-                play_quiz(get_default_quizzes())
+                play_quiz(quizzes)
             elif choice == 2:
-                print("[퀴즈 추가] 아직 구현 전입니다.")
+                add_quiz(quizzes)
             elif choice == 3:
                 print("[퀴즈 목록] 아직 구현 전입니다.")
             elif choice == 4:
@@ -134,7 +136,30 @@ def play_quiz(quizzes):
 
     print(f"결과 : {len(quizzes)} 문제 중 {score}문제 정답!")
 
+def add_quiz(quizzes):
+    print("새로운 퀴즈를 추가합니다.")
+    question=read_non_empty_text("문제를 입력하세요 : ")
+    choices=[]
 
+    for i in range(1, 5):
+        choice = read_non_empty_text(f"선택지 {i} : ")
+        choices.append(choice)
+
+    while True:
+        answer = read_answer_choice() # 이미 만들어둔 함수 재사용
+        if answer is not None:
+            break
+
+    quizzes.append(Quiz(question, choices, answer))
+    print("퀴즈가 추가되었습니다.")
+
+def read_non_empty_text(prompt):
+    while True:
+        text = input(prompt).strip()
+        if text == "":
+            print("빈 값을 입력할 수 없습니다. 다시 입력해주세요.")
+            continue
+        return text
 
 
 if __name__ == "__main__":
