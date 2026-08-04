@@ -105,7 +105,7 @@ def main():
             elif choice == 2:
                 add_quiz(quizzes)
             elif choice == 3:
-                print("[퀴즈 목록] 아직 구현 전입니다.")
+                list_quizzes(quizzes)
             elif choice == 4:
                 print("[점수 확인] 아직 구현 전입니다.")
             elif choice == 5:
@@ -160,6 +160,16 @@ def read_non_empty_text(prompt):
             print("빈 값을 입력할 수 없습니다. 다시 입력해주세요.")
             continue
         return text
+
+def list_quizzes(quizzes):
+    if not quizzes:
+        print("등록된 퀴즈가 없습니다.")
+        return
+    print(f"등록된 퀴즈 목록 (총 {len(quizzes)}개)")
+    print("-" * 40)
+    for i, quiz in enumerate(quizzes, start=1):
+        print(f"[{i}] {quiz.question}")
+    print("-" * 40)
 
 
 if __name__ == "__main__":
