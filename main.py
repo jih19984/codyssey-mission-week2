@@ -1,5 +1,41 @@
 from quiz import Quiz
 
+
+def get_default_quizzes():
+    return [
+        Quiz(
+            "실행 중인 컨테이너 목록을 확인하는 도커 명령어는?",
+            ["docker images", "docker ps", "docker exec", "docker build"],
+            2,
+        ),
+        Quiz(
+            "Docker Hub 등 레지스트리에서 이미지를 내려받는 명령어는?",
+            ["docker pull", "docker push", "docker run", "docker commit"],
+            1,
+        ),
+        Quiz(
+            "Dockerfile을 기반으로 이미지를 빌드하는 명령어는?",
+            ["docker create", "docker start", "docker build", "docker load"],
+            3,
+        ),
+        Quiz(
+            "이미지를 컨테이너로 실행하는 명령어는?",
+            ["docker run", "docker stop", "docker rm", "docker rmi"],
+            1,
+        ),
+        Quiz(
+            "실행 중인 컨테이너 내부에 셸로 접속할 때 사용하는 명령어는?",
+            ["docker logs", "docker inspect", "docker exec", "docker attach"],
+            3,
+        ),
+        Quiz(
+            "컨테이너를 완전히 삭제하는 명령어는?",
+            ["docker stop", "docker rm", "docker rmi", "docker kill"],
+            2,
+        ),
+    ]
+
+
 def show_menu():
     print("=" * 40)
     print("      🎯 나만의 퀴즈 게임 🎯")
