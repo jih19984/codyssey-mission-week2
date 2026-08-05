@@ -92,6 +92,7 @@ def read_answer_choice():
 
 def main():
     quizzes = get_default_quizzes()
+    scores_history = [] # (scores, total) 튜플을 쌓을 리스트
 
     while True:
         try:
@@ -101,13 +102,13 @@ def main():
                 continue  # 잘못된 입력 -> 메뉴 다시 표시
 
             if choice == 1:
-                play_quiz(quizzes)
+                play_quiz(quizzes, scores_history)
             elif choice == 2:
                 add_quiz(quizzes)
             elif choice == 3:
                 list_quizzes(quizzes)
             elif choice == 4:
-                print("[점수 확인] 아직 구현 전입니다.")
+                show_score(scores_history)
             elif choice == 5:
                 print("게임을 종료합니다. 안녕하 가세여!")
                 break
@@ -115,7 +116,7 @@ def main():
             print("\n프로그램을 종료합니다.")
             break
 
-def play_quiz(quizzes):
+def play_quiz(quizzes, scores_history):
     if not quizzes:
         print("등록된 퀴즈가 없습니다.")
         return
@@ -135,6 +136,7 @@ def play_quiz(quizzes):
             print("오답입니다!")
 
     print(f"결과 : {len(quizzes)} 문제 중 {score}문제 정답!")
+    scores_history.append((score, len(quizzes)))
 
 def add_quiz(quizzes):
     print("새로운 퀴즈를 추가합니다.")
@@ -169,6 +171,20 @@ def list_quizzes(quizzes):
     print("-" * 40)
     for i, quiz in enumerate(quizzes, start=1):
         print(f"[{i}] {quiz.question}")
+    print("-" * 40)
+
+def show_score(score_history):
+    if not score_history:
+        print("아직 퀴즈를 푼 기록이 없습니다.")
+        return
+
+    print("점수 기록")
+    print("-" * 40)
+    for i, (score, total) in enumerate(score_history, start=1):
+        print(f"{i}회차: {total}문제 중 {score}문제 정답")
+    
+    last_score, last_total = score_history[-1]
+    print(f"최근 점수 : {last_total}문제 중 {last_score}문제 정답")
     print("-" * 40)
 
 
