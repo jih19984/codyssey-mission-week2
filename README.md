@@ -1,5 +1,4 @@
 # Docker 퀴즈 게임
-# git pull test용
 
 ## 프로젝트 개요
 
@@ -12,10 +11,10 @@
 ## 실행 방법
 
 ```bash
-python3 main.py
+python3.12 main.py
 ```
 
-Python 3.10 이상, 외부 라이브러리 없이 표준 라이브러리만 사용합니다.
+Python 3.10 이상, 외부 라이브러리 없이 표준 라이브러리만 사용합니다. (개발 환경: Python 3.12, `brew install python@3.12`로 설치)
 
 ## 기능 목록
 
@@ -73,3 +72,7 @@ codyssey-mission-week2/
 | 퀴즈 추가 | 점수 확인 |
 | --- | --- |
 | ![퀴즈 추가 화면](docs/screenshots/add_quiz.png) | ![점수 확인 화면](docs/screenshots/score.png) |
+
+| 개발 환경 | git log --oneline --graph |
+| --- | --- |
+| ![개발 환경](docs/screenshots/environment.png) | ![git log 그래프](docs/screenshots/git_log.png) |
