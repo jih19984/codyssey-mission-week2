@@ -189,22 +189,20 @@ class QuizGame:
     def read_menu_choice(self):
         """사용자에게 1~5 사이 숫자를 입력받습니다. 잘못된 입력이면 None을 반환합니다."""
         raw = input("선택 : ")
-        # TODO 1: raw.strip()으로 앞뒤 공백 제거
+
         raw = raw.strip()
-        # TODO 2: 빈 문자열이면 안내 메시지 출력하고 None 반환
         if raw == "":
             print("빈 문자열 입니다.")
             return None
 
-        # TODO 3: int(...)로 변환 시도, 실패하면(ValueError) 안내 메시지 출력하고 None 반환
         try:
             choice = int(raw)
         except ValueError:
             print("숫자만 입력해주세요.")
             return None
-        # TODO 4: 변환은 됐는데 1~5 범위 밖이면 안내 메시지 출력하고 None 반환
+
         if not (1 <= choice <= 5):
             print("입력된 숫자가 1이상 5이하의 자연수가 아닙니다.")
             return None
-        # TODO 5: 다 통과하면 정수값 반환
+
         return choice
