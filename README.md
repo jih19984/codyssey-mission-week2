@@ -36,7 +36,8 @@ codyssey-mission-week2/
 ├── quiz_game.py          # QuizGame 클래스 (메뉴, 게임 진행, 저장/불러오기)
 ├── state.json            # 퀴즈 데이터 및 최고 점수 저장 파일 (자동 생성, git 추적 제외)
 ├── docs/
-│   └── TROUBLESHOOTING.md  # 개발 중 겪은 이슈 및 해결 기록
+│   ├── TROUBLESHOOTING.md  # 개발 중 겪은 이슈 및 해결 기록
+│   └── screenshots/        # 실행 화면 스크린샷
 ├── .gitignore
 └── README.md
 ```
@@ -62,3 +63,13 @@ codyssey-mission-week2/
 
 - `quizzes`: 퀴즈 목록. 각 항목은 `question`(문제), `choices`(선택지 4개), `answer`(정답 번호, 1~4)로 구성됩니다.
 - `best_score`: 지금까지 퀴즈를 풀어서 얻은 최고 점수(맞춘 문제 수)입니다.
+
+## 실행 화면
+
+| 메뉴 | 퀴즈 풀기 |
+| --- | --- |
+| ![메뉴 화면](docs/screenshots/menu.png) | ![퀴즈 풀기 화면](docs/screenshots/play.png) |
+
+| 퀴즈 추가 | 점수 확인 |
+| --- | --- |
+| ![퀴즈 추가 화면](docs/screenshots/add_quiz.png) | ![점수 확인 화면](docs/screenshots/score.png) |
